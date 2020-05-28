@@ -1,0 +1,12 @@
+DATA:l_maktx LIKE makt-maktx.
+DATA:l_btext LIKE t156t-btext.
+
+CLEAR:l_maktx,l_btext.
+SELECT SINGLE btext INTO l_btext FROM t156t WHERE spras = sy-langu
+                                              AND bwart = i_mseg-bwart
+                                              AND sobkz = i_mseg-sobkz
+                                              AND kzbew = i_mseg-kzbew
+                                              AND kzzug = i_mseg-kzzug
+                                              AND kzvbr = i_mseg-kzvbr.
+SELECT SINGLE maktx INTO l_maktx FROM makt  WHERE spras = sy-langu AND matnr = i_mseg-matnr.
+CONCATENATE i_mseg-bwart ':' l_btext '-' l_maktx INTO e_sgtxt.
