@@ -1,0 +1,5 @@
+  if sy-subrc <> 0.
+    select single name1 into lv_name1 from kna1 where kunnr = vbrk-kunag.
+  concatenate '销售开票-' lv_name1 into lv_zname.
+  endif.
+  xaccit-sgtxt = lv_zname.
