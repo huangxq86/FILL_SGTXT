@@ -1,0 +1,7 @@
+    if t_bseg-sgtxt  is not initial.     
+         lv_sgtxt = t_bseg-sgtxt.
+    endif.
+    if t_bseg-hkont = '0022210101' or t_bseg-hkont = '0022210103'. 
+        t_bsegsub-sgtxt =  lv_sgtxt.  
+        modify t_bsegsub transporting sgtxt where tabix = l_tabix.
+    endif.
