@@ -1,0 +1,6 @@
+SELECT SINGLE maktx INTO l_maktx FROM makt WHERE spras = sy-langu AND matnr = xvbrp-matnr.
+IF l_bezei IS NOT INITIAL.
+   CONCATENATE l_bezei '-' l_maktx INTO xaccit-sgtxt.
+ELSE.
+  xaccit-sgtxt = l_maktx.
+ENDIF.
