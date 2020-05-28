@@ -1,0 +1,11 @@
+DATA:l_bsart LIKE ekko-bsart.
+DATA:l_batxt LIKE t161t-batxt.
+DATA:l_maktx LIKE makt-maktx.
+
+
+CLEAR:l_bsart,l_batxt,l_maktx.
+SELECT SINGLE bsart INTO l_bsart FROM ekko  WHERE ebeln = tab_drseg-ebeln.
+SELECT SINGLE batxt INTO l_batxt FROM t161t WHERE bsart = l_bsart AND bstyp = 'F' AND spras = sy-langu.
+SELECT SINGLE maktx INTO l_maktx FROM makt  WHERE matnr = tab_drseg-matnr AND spras = sy-langu.
+
+CONCATENATE l_batxt '-' l_maktx INTO e_sgtxt.
